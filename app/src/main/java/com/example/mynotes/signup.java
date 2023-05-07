@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class signup extends AppCompatActivity {
 
-    private EditText msignupemail,msignuppassword;
+    private EditText msignupemail, msignuppassword;
     private RelativeLayout msignup;
     private TextView mgotologin;
 
@@ -23,10 +23,10 @@ public class signup extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
-        msignupemail=findViewById(R.id.singupemail);
-        msignuppassword=findViewById(R.id.signuppassword);
-        msignup=findViewById(R.id.signup);
-        mgotologin=findViewById(R.id.gotologin);
+        msignupemail = findViewById(R.id.singupemail);
+        msignuppassword = findViewById(R.id.signuppassword);
+        msignup = findViewById(R.id.signup);
+        mgotologin = findViewById(R.id.gotologin);
         mgotologin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,7 +47,10 @@ public class signup extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Password Should Be Greater Than 7 Digits", Toast.LENGTH_SHORT).show();
                 } else {
                     ///registered the user to firebase
-                }}
-            });
+                }
+            }
+        });
+    }
+}
 
 
