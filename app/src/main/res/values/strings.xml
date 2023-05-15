@@ -19,4 +19,6 @@
     <string name="forget_password">Forget Password</string>
     <string name="new_user_sign_up">New User ! Sign Up</string>
     <string name="enter_your_email1">Enter your Email</string>
+    <string name="this_is_your_developer">this is your Developer</string>
+    <string name="todo">TODO</string>
 </resources>
