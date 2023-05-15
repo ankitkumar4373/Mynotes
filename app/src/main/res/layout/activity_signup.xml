@@ -59,7 +59,7 @@
         <EditText
             android:id="@+id/singupemail"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="50dp"
             android:hint="@string/enter_your_email"
             android:textColor="@color/black"
             android:importantForAutofill="no"
