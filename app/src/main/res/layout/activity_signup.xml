@@ -61,6 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:hint="@string/enter_your_email"
+            android:textColor="@color/black"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
             android:labelFor="@string/enter_your_email1"
@@ -86,6 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter_your_Password"
+            android:textColor="@color/black"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             tools:ignore="SpeakableTextPresentCheck">
