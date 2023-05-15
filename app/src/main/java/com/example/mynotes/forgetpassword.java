@@ -1,5 +1,6 @@
 package com.example.mynotes;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,10 +11,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class forgetpassword extends AppCompatActivity {
     private EditText mforgetpassword;
     private Button mpasswordrecoverbutton;
     private TextView mgobacktologin;
+
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +30,8 @@ public class forgetpassword extends AppCompatActivity {
         mforgetpassword=findViewById(R.id.forgetpassword);
         mpasswordrecoverbutton=findViewById(R.id.passwordrecoverbutton);
         mgobacktologin=findViewById(R.id.gobacktologin);
+
+        firebaseAuth=FirebaseAuth.getInstance();
 
         mgobacktologin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +54,24 @@ public class forgetpassword extends AppCompatActivity {
                 else
                 {
                     // We have to send the password recover mail
+                    firebaseAuth.sendPasswordResetEmail(mail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+
+                            if(task.isSuccessful())
+                            {
+                                Toast.makeText(getApplicationContext(),"Recovery Link Sent to Mail",Toast.LENGTH_SHORT).show();
+                                finish();
+                                startActivity(new Intent(forgetpassword.this, MainActivity.class));
+                            }
+
+                            else
+                            {
+                                Toast.makeText(getApplicationContext(),"Email is Wrong. Please Try Again.",Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                    });
                 }
             }
         });
