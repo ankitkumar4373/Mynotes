@@ -15,7 +15,7 @@
 
     </RelativeLayout>
 
-        <android.support.v7.widget.LinearLayoutCompat
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -27,7 +27,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="WELCOME BACK !"
+                android:text="@string/welcome_back"
                 android:textSize="42sp"
                 android:textColor="#FFbD4D"
                 android:textStyle="bold">
@@ -37,7 +37,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Log in to Continue"
+                android:text="@string/log_in_to_continue"
                 android:textSize="23sp"
                 android:textColor="#FF8596">
 
@@ -45,9 +45,9 @@
 
 
 
-        </android.support.v7.widget.LinearLayoutCompat>
+        </LinearLayout>
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/centerline"
@@ -57,18 +57,19 @@
         android:layout_marginLeft="30dp">
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/loginemail"
-            android:hint="Enter your Email"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="@string/enter_your_Email"
+            android:importantForAutofill="no"
             android:inputType="textEmailAddress"
-            >
+            tools:ignore="SpeakableTextPresentCheck">
 
         </EditText>
 
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/centerline"
@@ -80,16 +81,18 @@
 
 
         <EditText
+            android:id="@+id/loginpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/loginpassword"
-            android:hint="Enter your Password"
+            android:hint="@string/enter_your_Password"
 
-            >
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            tools:ignore="SpeakableTextPresentCheck">
 
         </EditText>
 
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -107,7 +110,7 @@
             android:textStyle="bold"
             android:layout_marginStart="8dp"
             android:textSize="16sp"
-            android:text="Log In"
+            android:text="@string/log_in"
             android:layout_centerInParent="true"
             android:textColor="@color/white">
 
@@ -118,7 +121,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Forget Password"
+        android:text="@string/forget_password"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:id="@+id/gotoforgetpassword"
@@ -145,7 +148,7 @@
             android:textStyle="bold"
             android:layout_marginStart="8dp"
             android:textSize="16sp"
-            android:text="New User ! Sign Up"
+            android:text="@string/new_user_sign_up"
             android:layout_centerInParent="true"
             android:textColor="@color/white">
 

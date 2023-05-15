@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">My Notes</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="don_t_worry_we_are_here">Don\'t Worry We Are Here</string>
+    <string name="enter_your_registered_email">Enter Your Registered Email</string>
+    <string name="click_here_to_recover">Click Here to Recover</string>
+    <string name="go_back_to_login_screen">Go Back To Login Screen</string>
+    <string name="new_user">New User</string>
+    <string name="nice_to_see_you_here">Nice to See You Here</string>
+    <string name="enter_your_email">Enter your Email</string>
+    <string name="enter_your_password">Enter your Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="want_to_login">Want To Login?</string>
+    <string name="welcome_back">WELCOME BACK !</string>
+    <string name="log_in_to_continue">Log in to Continue</string>
+    <string name="enter_your_Email">Enter your Email</string>
+    <string name="enter_your_Password">Enter your Password</string>
+    <string name="log_in">Log In</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="new_user_sign_up">New User ! Sign Up</string>
+    <string name="enter_your_email1">Enter your Email</string>
 </resources>
