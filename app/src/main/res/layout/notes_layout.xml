@@ -63,7 +63,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"
-                android:text="This is the code which appear here"
+                android:text="@string/this_is_the_code_which_appear_here"
                 android:textSize="15sp"
                 android:textColor="@color/black">
 

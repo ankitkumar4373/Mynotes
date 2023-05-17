@@ -107,7 +107,8 @@ public class MainActivity extends AppCompatActivity {
     {
         FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
 
-        if(firebaseUser.isEmailVerified()==true)
+        assert firebaseUser != null;
+        if(firebaseUser.isEmailVerified())
         {
             Toast.makeText(getApplicationContext(),"Logged In",Toast.LENGTH_SHORT).show();
             finish();

@@ -1,6 +1,7 @@
 package com.example.mynotes;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +12,8 @@ import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Objects;
 
 public class notesactivity extends AppCompatActivity {
 
@@ -26,7 +29,12 @@ public class notesactivity extends AppCompatActivity {
         mcreatenotefab=findViewById(R.id.createnotefab);
         firebaseAuth=FirebaseAuth.getInstance();
 
-        getSupportActionBar().setTitle("All Notes");
+        //getSupportActionBar().setTitle("All Notes");
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.all_notes);
+        }
 
         mcreatenotefab.setOnClickListener(new View.OnClickListener() {
             @Override

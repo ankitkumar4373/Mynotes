@@ -19,8 +19,10 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:hint="Enter your note title here : "
-            android:id="@+id/createtitleofnote">
+            android:hint="@string/enter_your_note_title_here"
+            android:id="@+id/createtitleofnote"
+            android:autofillHints="no"
+            android:inputType="text">
         </EditText>
 
 
@@ -33,10 +35,13 @@
         android:background="#faf7f7"
         android:gravity="top|left"
         android:textColor="@color/black"
-        android:hint="Enter your Note content here: "
+        android:hint="@string/enter_your_note_content_here"
         android:layout_below="@id/toolbarofcreatenote"
         android:padding="15dp"
-        android:id="@+id/createcontentfnote">
+        android:id="@+id/createcontentfnote"
+        tools:ignore="RtlHardcoded"
+        android:autofillHints=""
+        android:inputType="text">
 
     </EditText>
 
@@ -44,14 +49,15 @@
         android:id="@+id/savenote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom|end"
-        android:layout_marginRight="30dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         android:background="#A1F4FB"
         android:src="@drawable/save"
-        app:maxImageSize="56dp">
+        app:maxImageSize="56dp"
+        android:contentDescription="@string/type_something">
 
 
 

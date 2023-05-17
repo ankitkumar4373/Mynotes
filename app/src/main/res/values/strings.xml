@@ -21,4 +21,10 @@
     <string name="enter_your_email1">Enter your Email</string>
     <string name="this_is_your_developer">this is your Developer</string>
     <string name="todo">TODO</string>
+    <string name="this_is_the_code_which_appear_here">This is the code which appear here</string>
+    <string name="enter_your_note_title_here">Enter your note title here :</string>
+    <string name="enter_your_note_content_here">Enter your Note content here:</string>
+    <string name="todo1">TODO</string>
+    <string name="type_something">Type something</string>
+    <string name="all_notes">All Notes</string>
 </resources>

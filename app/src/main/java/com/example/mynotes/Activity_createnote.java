@@ -72,7 +72,7 @@ public class Activity_createnote extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void unused) {
                             Toast.makeText(getApplicationContext(),"Note Created Successfully",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(Activity_createnote.this,MainActivity.class));
+                            startActivity(new Intent(Activity_createnote.this,notesactivity.class));
                             //in place of MainActivity there is notesactivity in yt video
                         }
                     }).addOnFailureListener(new OnFailureListener() {
