@@ -123,6 +123,8 @@ public class notesactivity extends AppCompatActivity {
                                 return false;
                             }
                         });
+
+                        popupMenu.show();
                     }
                 }));
 
