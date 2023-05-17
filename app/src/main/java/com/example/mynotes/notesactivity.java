@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -83,6 +84,14 @@ public class notesactivity extends AppCompatActivity {
 
                 noteViewHolder.notetitle.setText(firebasemodel.getTitle());
                 noteViewHolder.notecontent.setText(firebasemodel.getContent());
+
+                noteViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void OnClick(View v) {
+                        //we have to open note detail activity
+                        Toast.makeText(getApplicationContext(), "this is clicked", Toast.LENGTH_SHORT).show();
+                    }
+                } );
 
             }
 
@@ -153,9 +162,8 @@ public class notesactivity extends AppCompatActivity {
     }
 
 
-    private int getRandomColor()
-    {
-        List<Integer>colorcode=new ArrayList<>();
+    private int getRandomColor() {
+        List<Integer> colorcode = new ArrayList<>();
         colorcode.add(R.color.grey);
         colorcode.add(R.color.green);
         colorcode.add(R.color.pink);
@@ -167,7 +175,8 @@ public class notesactivity extends AppCompatActivity {
         colorcode.add(R.color.color4);
         colorcode.add(R.color.color5);
 
-        Random random=new Random();
-        in
+        Random random = new Random();
+        int number = random.nextInt(colorcode.size());
+        return colorcode.get(number);
     }
 }
