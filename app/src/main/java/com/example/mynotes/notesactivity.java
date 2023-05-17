@@ -25,7 +25,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class notesactivity extends AppCompatActivity {
 
@@ -72,6 +75,11 @@ public class notesactivity extends AppCompatActivity {
         noteAdapter=new FirestoreRecyclerAdapter<firebasemodel, NoteViewHolder>(allusernotes) {
             @Override
             protected void onBindViewHolder(@NonNull NoteViewHolder noteViewHolder, int i, @NonNull firebasemodel firebasemodel) {
+
+
+                int colourcode=getRandomColor();
+                noteViewHolder.mnote.setBackgroundColor(noteViewHolder.itemView.getResources(),getColor(colourcode,null ));
+
 
                 noteViewHolder.notetitle.setText(firebasemodel.getTitle());
                 noteViewHolder.notecontent.setText(firebasemodel.getContent());
@@ -142,5 +150,24 @@ public class notesactivity extends AppCompatActivity {
         if(noteAdapter!=null){
             noteAdapter.startListening();
         }
+    }
+
+
+    private int getRandomColor()
+    {
+        List<Integer>colorcode=new ArrayList<>();
+        colorcode.add(R.color.grey);
+        colorcode.add(R.color.green);
+        colorcode.add(R.color.pink);
+        colorcode.add(R.color.lightgreen);
+        colorcode.add(R.color.skyblue);
+        colorcode.add(R.color.color1);
+        colorcode.add(R.color.color2);
+        colorcode.add(R.color.color3);
+        colorcode.add(R.color.color4);
+        colorcode.add(R.color.color5);
+
+        Random random=new Random();
+        in
     }
 }
