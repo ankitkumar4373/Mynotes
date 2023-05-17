@@ -95,7 +95,10 @@ public class notesactivity extends AppCompatActivity {
                     @Override
                     public void OnClick(View v) {
                         //we have to open note detail activity
-                        Toast.makeText(getApplicationContext(), "this is clicked", Toast.LENGTH_SHORT).show();
+
+                        Intent intent=new Intent(v.getContext(), notedetails.class);
+                        v.getContext().startActivity(intent);
+                        //Toast.makeText(getApplicationContext(), "this is clicked", Toast.LENGTH_SHORT).show();
                     }
                 } );
 
