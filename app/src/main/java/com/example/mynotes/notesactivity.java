@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.TextureView;
@@ -68,18 +69,29 @@ public class notesactivity extends AppCompatActivity {
 
         FirestoreRecyclerOptions<firebasemodel>allusernotes=new FirestoreRecyclerOptions.Builder<firebasemodel>().setQuery(query, firebasemodel.class).build();
 
-        noteAdapter=new FirestoreRecyclerAdapter<firebasemodel, NoteViewHolder>() {
+        noteAdapter=new FirestoreRecyclerAdapter<firebasemodel, NoteViewHolder>(allusernotes) {
             @Override
-            protected void onBindViewHolder(@NonNull NoteViewHolder holder, int position, @NonNull firebasemodel model) {
+            protected void onBindViewHolder(@NonNull NoteViewHolder noteViewHolder, int i, @NonNull firebasemodel firebasemodel) {
+
+                noteViewHolder.notetitle.setText(firebasemodel.getTitle());
+                noteViewHolder.notecontent.setText(firebasemodel.getContent());
 
             }
 
             @NonNull
             @Override
             public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                return null;
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.notes_layout,parent,false);
+                return new NoteViewHolder(view);
             }
-        }
+        };
+
+
+        mrecyclerview=findViewById(R.id.recycleview);
+        mrecyclerview.setHasFixedSize(true);
+        staggeredGridLayoutManager=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        mrecyclerview.setLayoutManager(staggeredGridLayoutManager);
+        mrecyclerview.setAdapter(noteAdapter);
 
 
     }
@@ -115,5 +127,20 @@ public class notesactivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        noteAdapter.startListening();
+    }
+
+    @Override
+    protected  void onStop(){
+        super.onStop();
+        if(noteAdapter!=null){
+            noteAdapter.startListening();
+        }
     }
 }
