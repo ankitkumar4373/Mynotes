@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     public FirebaseAuth firebaseAuth;
 
+    ProgressBar mprogressbarofmainactivity;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         mlogin=findViewById(R.id.login);
         mgotoforgetpassword=findViewById(R.id.gotoforgetpassword);
         mgotosingnup=findViewById(R.id.gotosignup);
+        mprogressbarofmainactivity=findViewById(R.id.progressbarofmainactivity);
 
         firebaseAuth=FirebaseAuth.getInstance();
         FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
@@ -81,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else
                 {
+                    mprogressbarofmainactivity.setVisibility(View.VISIBLE);
+
+
                     //Login the user
                     firebaseAuth.signInWithEmailAndPassword(mail,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -93,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                             else
                             {
                                 Toast.makeText(getApplicationContext(),"Account Doesn't Exist",Toast.LENGTH_SHORT).show();
+                                mprogressbarofmainactivity.setVisibility(View.INVISIBLE);
                             }
 
 
@@ -117,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
         else
         {
+            mprogressbarofmainactivity.setVisibility(View.INVISIBLE);
             Toast.makeText(getApplicationContext(),"Verify your Email First",Toast.LENGTH_SHORT).show();
             firebaseAuth.signOut();
         }

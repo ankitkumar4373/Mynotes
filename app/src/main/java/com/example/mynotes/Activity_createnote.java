@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
@@ -32,6 +33,8 @@ public class Activity_createnote extends AppCompatActivity {
     FirebaseUser fireBaseUser;
     FirebaseFirestore fireBaseFirestore;
 
+    ProgressBar mprogressbarofcreatenote;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,8 @@ public class Activity_createnote extends AppCompatActivity {
         msavenote=findViewById(R.id.savenote);
         mcreatecontentofnote=findViewById(R.id.createcontentfnote);
         mcreatetitleofnote=findViewById(R.id.createtitleofnote);
+
+        mprogressbarofcreatenote=findViewById(R.id.progressbarofcreatenote);
 
         Toolbar toolbar=findViewById(R.id.toolbarofcreatenote);
         setSupportActionBar(toolbar);
@@ -63,6 +68,8 @@ public class Activity_createnote extends AppCompatActivity {
                 }
                 else
                 {
+                    mprogressbarofcreatenote.setVisibility(View.VISIBLE);
+
                     DocumentReference documentReference=fireBaseFirestore.collection("notes").document(fireBaseUser.getUid()).collection("myNotes").document();
                     Map<String ,Object> note =new HashMap<>();
                     note.put("title",title);
@@ -70,15 +77,18 @@ public class Activity_createnote extends AppCompatActivity {
 
                     documentReference.set(note).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
-                        public void onSuccess(Void unused) {
+                        public void onSuccess(Void aVoid) {
                             Toast.makeText(getApplicationContext(),"Note Created Successfully",Toast.LENGTH_SHORT).show();
+                            //mprogressbarofcreatenote.setVisibility(View.INVISIBLE);
                             startActivity(new Intent(Activity_createnote.this,notesactivity.class));
+
                             //in place of MainActivity there is notesactivity in yt video
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(getApplicationContext(),"Failed to Create Note",Toast.LENGTH_SHORT).show();
+                            mprogressbarofcreatenote.setVisibility(View.INVISIBLE);
                         }
                     });
                 }
