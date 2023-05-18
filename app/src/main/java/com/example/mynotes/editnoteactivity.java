@@ -14,7 +14,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class editnoteactivity extends AppCompatActivity {
@@ -22,6 +28,11 @@ public class editnoteactivity extends AppCompatActivity {
     Intent data;
     EditText meditttitleofnote,meditcontentofnote;
     FloatingActionButton msaveeditnote;
+
+    FirebaseAuth firebaseAuth;
+    FirebaseFirestore firebaseFirestore;
+    FirebaseUser firebaseUser;
+
 
 
     @SuppressLint({"ResourceType", "MissingInflatedId"})
@@ -32,6 +43,11 @@ public class editnoteactivity extends AppCompatActivity {
         meditttitleofnote=findViewById(R.id.edittitleofnote);
         meditcontentofnote=findViewById(R.id.editcontentofnote);
         msaveeditnote=findViewById(R.id.saveeditnote);
+
+        data=getIntent();
+
+        firebaseFirestore=FirebaseFirestore.getInstance();
+        firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
 
         Toolbar toolbar=findViewById(R.id.toolbarofeditnoteactivity);
         setSupportActionBar(toolbar);
@@ -45,7 +61,20 @@ public class editnoteactivity extends AppCompatActivity {
         msaveeditnote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"savebutton click ",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"savebutton click ",Toast.LENGTH_SHORT).show();
+                String newtitle =meditttitleofnote.getText().toString();
+                String newcontent= meditcontentofnote.getText().toString();
+
+                if(newtitle.isEmpty()|| newcontent.isEmpty())
+                {
+                    Toast.makeText(getApplicationContext(), "Something is empty",Toast.LENGTH_SHORT).show();
+
+                }
+                else {
+                    DocumentReference documentReference=firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection("myNotes").document(data.getStringExtra("noteId"));
+                    Map<String,Object> note=new HashMap<>();
+
+                }
             }
         });
 

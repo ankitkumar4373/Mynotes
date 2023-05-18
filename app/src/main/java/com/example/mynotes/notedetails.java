@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -28,6 +29,9 @@ public class  notedetails extends AppCompatActivity {
         mtitleofnotedetail=findViewById(R.id.titleofnotedetail);
         mcontentofnotedetail=findViewById(R.id.contentofnotedetail);
         mgotoeditnote=findViewById(R.id.gotoeditnote);
+
+        Toolbar toolbar=findViewById(R.id.toolbarofnotedetail);
+        setSupportActionBar(toolbar);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ActionBar actionBar = getSupportActionBar();
@@ -44,6 +48,7 @@ public class  notedetails extends AppCompatActivity {
                 intent.putExtra("title",data.getStringExtra("title"));
                 intent.putExtra("content",data.getStringExtra("content"));
                 intent.putExtra("noteId",data.getStringExtra("noteId"));
+                v.getContext().startActivity(intent);
 
             }
         });
