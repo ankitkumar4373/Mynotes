@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -73,7 +75,21 @@ public class editnoteactivity extends AppCompatActivity {
                 else {
                     DocumentReference documentReference=firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection("myNotes").document(data.getStringExtra("noteId"));
                     Map<String,Object> note=new HashMap<>();
+                    note.put("title", newtitle);
+                    note.put("content", newcontent);
+                    documentReference.set(note).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(getApplicationContext(), "Note is updated",Toast.LENGTH_SHORT).show();
 
+                            startActivity(new Intent(editnoteactivity.this, notesactivity.class));
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getApplicationContext(), "Failed to Update",Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             }
         });

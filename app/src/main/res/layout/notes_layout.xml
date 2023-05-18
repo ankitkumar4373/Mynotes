@@ -38,17 +38,19 @@
                     android:text="@string/this_is_your_developer"
                     android:textColor="@color/black"
                     android:textSize="20sp"
+                    android:layout_weight="1"
+
 
                     >
 
                 </TextView>
 
                 <ImageView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/menupopbutton"
                     android:layout_weight="0"
-                    android:src="@drawable/baseline_more_vert_24"
+                    android:src="@drawable/baseline_more_vert_25"
                     android:contentDescription="@string/todo"
                     tools:ignore="HardcodedText">
 

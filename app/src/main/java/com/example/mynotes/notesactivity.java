@@ -43,11 +43,16 @@ public class notesactivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     RecyclerView mrecyclerview;
+
+
+
     StaggeredGridLayoutManager staggeredGridLayoutManager;
 
     FirebaseUser firebaseUser;
-    FirebaseFirestore firebaseFirestore;
+    FirebaseFirestore firebaseFirestore=FirebaseFirestore.getInstance();
     FirestoreRecyclerAdapter<firebasemodel,NoteViewHolder> noteAdapter;
+
+
 
 
     @Override
@@ -70,7 +75,7 @@ public class notesactivity extends AppCompatActivity {
         mcreatenotefab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(notesactivity.this, Activity_createnote.class));
+                startActivity(new Intent(notesactivity.this, Activity_createnote.class  ));
 
             }
         });

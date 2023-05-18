@@ -27,4 +27,6 @@
     <string name="todo1">TODO</string>
     <string name="type_something">Type something</string>
     <string name="all_notes">All Notes</string>
+    <string name="title_displayed_here">Title displayed here</string>
+    <string name="logout">Logout</string>
 </resources>
